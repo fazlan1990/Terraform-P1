@@ -11,7 +11,7 @@ terraform {
     organization = "fas-org1"
 
     workspaces {
-      name = "TerraformP1"
+      name = "TerraformP2"
     }
   }
 }
@@ -22,8 +22,8 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "811-d06e33db-provide-continuous-delivery-with-gith"
-  location = "westus"
+  name     = "811-2420740e-provide-continuous-delivery-with-gith"
+  location = "eastus"
 }
 
 resource "azurerm_storage_account" "storage" {
