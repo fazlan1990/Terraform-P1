@@ -7,12 +7,11 @@ terraform {
       version = ">= 3.43.0"
     }
   }
-   cloud {
-    organization = "fas-org1"
-
-    workspaces {
-      name = "TerraformP2"
-    }
+  backend "azurerm" {
+    resource_group_name = "Terraform"
+    storage_account_name = ""
+    container_name       = "tfstatefile"
+    key                  = "de.terraform.tfstate"
   }
 }
 
