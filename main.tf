@@ -7,6 +7,7 @@ terraform {
       version = ">= 3.43.0"
     }
   }
+
   backend "azurerm" {
     resource_group_name = "Terraform"
     storage_account_name = "terraformfas2"
@@ -18,6 +19,12 @@ terraform {
 provider "azurerm" {
   features {}
   skip_provider_registration = true
+}
+
+resource "null_resource" "az_login" {
+  provisioner "local-exec" {
+    command = "az login --tenant 30fe8ff1-adc6-444d-ba94-1238894df42c -u kk_lab_user_main-b911665b0069409b@azurekmlprodkodekloud.onmicrosoft.com -p pJm4^qSdAcUw4Rog"
+  }
 }
 
 resource "azurerm_resource_group" "rg" {
@@ -32,4 +39,3 @@ resource "azurerm_storage_account" "storage" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
-
