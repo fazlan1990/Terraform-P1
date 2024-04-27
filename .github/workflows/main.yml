@@ -22,11 +22,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    # - name: Setup Terraform
-    #   uses: hashicorp/setup-terraform@v1
-    #   with:
-    #     cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    # Install Azure CLI
+    - name: Install Azure CLI
+      run: |
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+    # Log in to Azure CLI
+    - name: Azure Login
+      run: |
+      az login --tenant 30fe8ff1-adc6-444d-ba94-1238894df42c -u kk_lab_user_main-b911665b0069409b@azurekmlprodkodekloud.onmicrosoft.com -p pJm4^qSdAcUw4Rog
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
@@ -36,6 +40,6 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
 
-      # Build or change infrastructure according to Terraform configuration files
+    # Build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false

@@ -21,12 +21,6 @@ provider "azurerm" {
   skip_provider_registration = true
 }
 
-resource "null_resource" "az_login" {
-  provisioner "local-exec" {
-    command = "az login --tenant 30fe8ff1-adc6-444d-ba94-1238894df42c -u kk_lab_user_main-b911665b0069409b@azurekmlprodkodekloud.onmicrosoft.com -p pJm4^qSdAcUw4Rog"
-  }
-}
-
 resource "azurerm_resource_group" "rg" {
   name     = "kml_rg_main-b911665b0069409b"
   location = "West US"
