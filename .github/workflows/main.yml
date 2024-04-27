@@ -32,14 +32,16 @@ jobs:
       run: |
          az login --tenant 30fe8ff1-adc6-444d-ba94-1238894df42c -u kk_lab_user_main-b911665b0069409b@azurekmlprodkodekloud.onmicrosoft.com -p pJm4^qSdAcUw4Rog
     
-    # Install Azure CLI
+   
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init
+      run: terraform init
+
+     # Install Azure CLI
     - name: terraform import
       run: |
          terraform import azurerm_resource_group.rg  /subscriptions/a2b28c85-1948-4263-90ca-bade2bac4df4/resourceGroups/kml_rg_main-b911665b0069409b
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: terraform init
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
