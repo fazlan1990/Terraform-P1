@@ -9,7 +9,7 @@ terraform {
   }
   backend "azurerm" {
     resource_group_name = "Terraform"
-    storage_account_name = ""
+    storage_account_name = "terraformfas2"
     container_name       = "tfstatefile"
     key                  = "de.terraform.tfstate"
   }
@@ -21,12 +21,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "811-2420740e-provide-continuous-delivery-with-gith"
-  location = "eastus"
+  name     = "kml_rg_main-b911665b0069409b"
+  location = "West US"
 }
 
 resource "azurerm_storage_account" "storage" {
-  name                     = "faslanstr45"
+  name                     = "faslanstra45"
   location                 = azurerm_resource_group.rg.location
   resource_group_name      = azurerm_resource_group.rg.name
   account_tier             = "Standard"
